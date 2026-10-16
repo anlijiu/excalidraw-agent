@@ -58,7 +58,7 @@ export default function DiagramViewer() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const elements = convertToExcalidrawElements(skeleton as any);
       api.updateScene({ elements });
-      api.scrollToContent(elements, { fitToContent: true });
+      api.setViewport({ target: elements, fit: "scale-down" });
     } catch (e) {
       setError(`Render failed: ${e instanceof Error ? e.message : String(e)}`);
     }
@@ -102,7 +102,8 @@ export default function DiagramViewer() {
       </div>
       <div className="viewer-canvas">
         <Excalidraw
-          excalidrawAPI={setApi}
+          // 0.18 renamed this prop; `excalidrawAPI` is silently ignored.
+          onExcalidrawAPI={setApi}
           initialData={{ appState: { openSidebar: null, viewModeEnabled: true } }}
         />
       </div>

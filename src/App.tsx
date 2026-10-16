@@ -35,9 +35,12 @@ export default function App() {
     excalidrawAPIRef.current = excalidrawAPI;
   }, [excalidrawAPI]);
 
-  const handleApiReady = useCallback((api: ExcalidrawImperativeAPI) => {
-    setExcalidrawAPI(api);
-  }, []);
+  const handleApiReady = useCallback(
+    (api: ExcalidrawImperativeAPI | null) => {
+      setExcalidrawAPI(api);
+    },
+    []
+  );
 
   const agent = useAgent({ agent: "design-agent", name: sessionId });
 
@@ -102,7 +105,9 @@ export default function App() {
               elements: next,
               captureUpdate: CaptureUpdateAction.IMMEDIATELY,
             });
-            excalidrawAPI.scrollToContent(next, { fitToContent: true });
+            // 0.18 replaced scrollToContent(target, { fitToContent: true })
+            // with setViewport({ target, fit }).
+            excalidrawAPI.setViewport({ target: next, fit: "scale-down" });
           }
         } else if (p.type === "tool-updateElements") {
           const output = p.output as {

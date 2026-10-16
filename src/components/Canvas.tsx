@@ -5,7 +5,9 @@ import type { AppState } from "@excalidraw/excalidraw/types";
 import { useRef, useCallback } from "react";
 
 interface CanvasProps {
-  onApiReady?: (api: ExcalidrawImperativeAPI) => void;
+  // Called with the live API once the editor mounts, and with null right
+  // before it unmounts (Excalidraw 0.18 contract for onExcalidrawAPI).
+  onApiReady?: (api: ExcalidrawImperativeAPI | null) => void;
   onThemeChange?: (theme: "light" | "dark") => void;
 }
 
@@ -14,7 +16,7 @@ export default function Canvas({ onApiReady, onThemeChange }: CanvasProps) {
   const lastTheme = useRef<string>("light");
 
   const handleMount = useCallback(
-    (api: ExcalidrawImperativeAPI) => {
+    (api: ExcalidrawImperativeAPI | null) => {
       apiRef.current = api;
       onApiReady?.(api);
     },
@@ -34,7 +36,11 @@ export default function Canvas({ onApiReady, onThemeChange }: CanvasProps) {
   return (
     <div className="canvas-wrapper">
       <Excalidraw
-        excalidrawAPI={handleMount}
+        // Excalidraw 0.18 renamed the `excalidrawAPI` prop to
+        // `onExcalidrawAPI` (and calls it with null on unmount). Passing the
+        // old name is silently ignored, which leaves the app with no handle
+        // on the scene — queryCanvas then always reports an empty canvas.
+        onExcalidrawAPI={handleMount}
         initialData={{ appState: { openSidebar: null } }}
         onChange={handleChange}
       />
