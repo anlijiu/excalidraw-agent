@@ -1,4 +1,4 @@
-import { Excalidraw } from "@excalidraw/excalidraw";
+import { Excalidraw, FONT_FAMILY } from "@excalidraw/excalidraw";
 import "@excalidraw/excalidraw/index.css";
 import type { ExcalidrawImperativeAPI } from "@excalidraw/excalidraw/types";
 import type { AppState } from "@excalidraw/excalidraw/types";
@@ -41,7 +41,10 @@ export default function Canvas({ onApiReady, onThemeChange }: CanvasProps) {
         // old name is silently ignored, which leaves the app with no handle
         // on the scene — queryCanvas then always reports an empty canvas.
         onExcalidrawAPI={handleMount}
-        initialData={{ appState: { openSidebar: null } }}
+        initialData={{ appState: {
+          currentItemFontFamily: FONT_FAMILY.Nunito,
+          openSidebar: null
+        } }}
         onChange={handleChange}
       />
     </div>

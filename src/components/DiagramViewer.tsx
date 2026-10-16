@@ -12,6 +12,7 @@
 import { useState } from "react";
 import {
   Excalidraw,
+  FONT_FAMILY,
   convertToExcalidrawElements,
 } from "@excalidraw/excalidraw";
 import "@excalidraw/excalidraw/index.css";
@@ -104,7 +105,11 @@ export default function DiagramViewer() {
         <Excalidraw
           // 0.18 renamed this prop; `excalidrawAPI` is silently ignored.
           onExcalidrawAPI={setApi}
-          initialData={{ appState: { openSidebar: null, viewModeEnabled: true } }}
+          initialData={{ appState: {
+            currentItemFontFamily: FONT_FAMILY.Nunito,
+            openSidebar: null,
+            viewModeEnabled: true
+          } }}
         />
       </div>
     </div>

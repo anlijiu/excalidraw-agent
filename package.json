@@ -49,5 +49,11 @@
     "esbuild@0.27.7": true,
     "esbuild@0.21.5": true,
     "workerd@1.20260804.1": true
+  },
+  "overrides": {
+    "@excalidraw/excalidraw": "file:/home/an/workspace/js/excalidraw/packages/excalidraw",
+    "@excalidraw/common": "file:/home/an/workspace/js/excalidraw/packages/common",
+    "@excalidraw/element": "file:/home/an/workspace/js/excalidraw/packages/element",
+    "@excalidraw/math": "file:/home/an/workspace/js/excalidraw/packages/math"
   }
 }
