@@ -2,10 +2,10 @@
 # cp .dev.vars.example .dev.vars
 
 OPENROUTER_API_KEY=your-openrouter-api-key-here
-OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
+OPENROUTER_BASE_URL=https://api.deepseek.com
 
 # Any model identifier accepted by the configured API endpoint
-OPENROUTER_MODEL=openai/gpt-5.4-mini
+OPENROUTER_MODEL=deepseek-flash
 
 # Free signup at https://www.braintrust.dev — used in lesson 5 for the eval dashboard
 BRAINTRUST_API_KEY=your-braintrust-api-key-here
