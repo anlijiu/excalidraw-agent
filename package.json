@@ -16,7 +16,10 @@
   "dependencies": {
     "@ai-sdk/openai": "^3.0.50",
     "@cloudflare/ai-chat": "^0.10.1",
-    "@excalidraw/excalidraw": "^0.18.1",
+    "@excalidraw/excalidraw": "file:/home/an/workspace/js/excalidraw/packages/excalidraw",
+    "@excalidraw/common": "file:/home/an/workspace/js/excalidraw/packages/common",
+    "@excalidraw/element": "file:/home/an/workspace/js/excalidraw/packages/element",
+    "@excalidraw/math": "file:/home/an/workspace/js/excalidraw/packages/math",
     "@upstash/vector": "^1.2.3",
     "agents": "^0.20.1",
     "ai": "^6.0.146",

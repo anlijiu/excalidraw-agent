@@ -156,3 +156,16 @@ For human review, open `/#viewer` (or click **viewer** in the lower corner of th
 5. The client converts those operations into Excalidraw elements and applies them to the scene.
 
 The shared agent implementation in [`src/agent-core.ts`](./src/agent-core.ts) is used by both the live Worker and the evaluation harness, reducing drift between tested and runtime behavior.
+
+## misc
+@excalidraw/excalidraw 使用本地的， 云端的太老
+package.json 里面用
+`"@excalidraw/excalidraw": "file:/home/an/workspace/js/excalidraw/packages/excalidraw",`
+确保本地有 excalidraw 最新源码
+``` bash
+cd /home/an/workspace/js
+gitc excalidraw/excalidraw
+cd excalidraw
+yarn
+yarn run build# 会提示错误啥的，不管，只要 packages/excalidraw/dist/ 正常生成就可以
+```
